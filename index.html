@@ -1,0 +1,161 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-template-component@3.2.1/dist/aframe-template-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@1.0.0/dist/aframe-look-at-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-state-component@7.1.0/dist/aframe-state-component.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/easytimer@1.1.1/src/easytimer.min.js"></script>
+    <script src="/Components/bird.js"></script>
+    <script src="/Components/score.js"></script>
+    <script src="/Components/tree.js"></script>
+    <script src="/Components/tiger.js"></script>
+    <script src="/Components/tiger-spawn.js"></script>
+    <script src="/Components/timer.js"></script>
+    <script src="/start.js" defer></script>
+    <style>
+      #loading {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        z-index: 10000;
+        background-color: white;
+        opacity: 50%;
+      }
+    </style>
+  </head>
+  <script>
+
+	</script>
+  <body>
+    <!-- https://stackoverflow.com/questions/53652132/a-frame-scene-with-intro-and-a-start-button -->
+    <div id="loading">
+      <button>
+        "HELLO"
+      </button>
+    </div>
+    <a-scene physics="debug: true" loading-screen="dotsColor: red; backgroundColor: black">
+      <a-asset>
+        <a-img id="grass" src="Assets/Textures/grass.jpg"></a-asset-item>
+        <a-asset-item id="bird-gltf" src="Assets/Models/Animals/low_poly_bird_animated/scene.gltf"></a-asset-item>
+        <a-asset-item id="tiger-gltf" src="Assets/Models/Animals/tiger_monster_-_animated/scene.gltf"></a-asset-item>
+        <a-asset-item id="tree1-gltf" src="Assets/Models/Trees/monstera_tree/scene.gltf"></a-asset-item>
+        <a-asset-item id="tree2-gltf" src="Assets/Models/Trees/old_tree/scene.gltf"></a-asset-item>
+        <a-asset-item id="tree3-gltf" src="Assets/Models/Trees/tree/scene.gltf"></a-asset-item>
+        <a-asset-item id="tree4-gltf" src="Assets/Models/Trees/tree_for_games/scene.gltf"></a-asset-item>
+        <a-asset-item id="rock1-gltf" src="Assets/Models/Envs/rock1.glb"></a-asset-item>
+        <a-asset-item id="rock2-gltf" src="Assets/Models/Envs/rock2.glb"></a-asset-item>
+        <audio id="forest-ambient" src="Assets/Sounds/zapsplat_nature_rainforest_evening_ambience_australia_stream_insects_birds_eastern_whipbird_14472-[AudioTrimmer.com].mp3" preload="auto"></audio>
+        <!-- <audio id="forest-ambient" src="Assets/Sounds/zapsplat-nature-rainforest-eveni.mp3" preload="auto"></audio> -->
+        <audio id="roar" src="Assets/Sounds/zapsplat_animals_lion_roar_growl_001_19910.mp3" preload="auto"></audio>
+        <audio id="chirp" src="Assets/Sounds/animals_bird_chirp_generic_3.mp3" preload="auto"></audio>
+        <audio id="ouch" src="Assets/Sounds/zapsplat_human_male_grunt_ouch_pain_003_15716.mp3" preload="auto"></audio>
+
+        <a-mixin
+          id="bird"
+          gltf-model="#bird-gltf"
+          animation-mixer="timeScale: 5"
+          scale="0.15 0.15 0.15">
+        </a-mixin>
+
+        <a-mixin
+          id="tiger"
+          gltf-model="#tiger-gltf"
+          animation-mixer="timeScale: 3; clip: walk-tigerish;"
+          scale="2 2 2">
+        </a-mixin>
+
+        <a-mixin id="tree1" gltf-model="#tree2-gltf" scale="0.001 0.001 0.001">
+        </a-mixin>
+
+        <a-mixin id="tree2" gltf-model="#tree3-gltf" scale="1 1 1">
+        </a-mixin>
+
+        <a-mixin id="tree3" gltf-model="#tree4-gltf" scale="0.01 0.01 0.01">
+        </a-mixin>
+
+        <a-mixin id="tree4" gltf-model="#tree5-gltf" scale="0.005 0.005 0.005">
+        </a-mixin>
+
+        <a-mixin id="rock1" gltf-model="#rock1-gltf" scale="1.75 1.75 1.75">
+        </a-mixin>
+
+        <a-mixin id="rock2" gltf-model="#rock2-gltf" scale="1.75 1.75 1.75">
+        </a-mixin>
+
+        <script id="rock-vert" type="text/html">
+          <a-entity class="link"
+            mixin="rock1"
+          >
+          </a-entity>
+        </script>
+
+        <script id="rock-hori" type="text/html">
+          <a-entity class="link"
+            mixin="rock1"
+          >
+          </a-entity>
+        </script>
+
+      </a-asset>
+
+      <!-- <a-entity id="rocks-vert" layout="type: line; margin: 1.5" position="-3 -1 -4">
+        <a-entity template="src: #rock-vert"></a-entity>
+        <a-entity template="src: #rock-vert"></a-entity>
+        <a-entity template="src: #rock-vert"></a-entity>
+      </a-entity> -->
+
+      <a-entity
+        mixin="rock1"
+        static-body="shape: cylinder;"
+        position="0 0 -15"
+      >
+      </a-entity>
+
+      <a-entity tiger-spawn id="tiger-spawn"></a-entity>
+
+      <!-- cam 2 -->
+      <!-- https://github.com/n5ro/aframe-extras/blob/master/examples/walls/index.html -->
+      <a-entity id="player" movement-controls="enabled: false" kinematic-body rotation="0 0 0">
+        <a-entity id="camera"
+                  camera
+                  position="0 1.6 0"
+                  look-controls="pointerLockEnabled: false">
+                  <a-cursor raycaster="objects: .clickable">
+                    <a-entity id="score" text="value: Score = 0" position="-1 2 -3" scale="10 10 10"></a-entity>
+                    <a-entity id="timer" timer position="0 1.5 -5"></a-entity>
+                  </a-cursor>
+                </a-entity>
+      </a-entity>
+      <!-- https://github.com/aframevr/aframe/issues/4742 -->
+
+      
+      <a-entity mixin="bird" bird class="clickable"></a-entity>
+      <a-entity mixin="bird" bird class="clickable"></a-entity>
+      <a-entity mixin="bird" bird class="clickable"></a-entity>
+      <a-entity mixin="bird" bird class="clickable"></a-entity>
+
+      <a-entity trees id="trees"></a-entity>
+
+      <a-entity timeee></a-entity>
+
+      <a-box id='loadingEl'>
+      </a-box>
+
+      <!-- <a-icosahedron color="#FF926B" radius="5"></a-icosahedron> --> -->
+      <a-entity template="src: #forest"></a-entity>
+      <a-entity id="ouch" sound="src: #ouch; positional: false; volume: 0.8;"></a-entity>
+      <!-- <a-entity sound="src: #ouch; autoplay: true; loop: true; positional: false;"></a-entity> -->
+
+      <a-plane src="#grass" color="#888888" height="100" width="100" rotation="-90 0 0" position="0 0.01 -1.5" repeat="100 100" static-body></a-plane>
+      
+      <!-- <a-sky color="#a3d0ed"></a-sky> -->
+      <!-- <a-gradient-sky material="shader: gradient; topColor: 255 0 0; bottomColor: 0 121 255;"></a-gradient-sky> -->
+
+      <a-entity environment="preset: default; fog: 0.96; skyType: gradient; skyColor: #00b3ff;"></a-entity>
+    </a-scene>
+  </body>
+</html>
