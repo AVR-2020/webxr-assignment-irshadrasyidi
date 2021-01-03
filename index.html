@@ -15,26 +15,9 @@
     <script src="/Components/tiger.js"></script>
     <script src="/Components/tiger-spawn.js"></script>
     <script src="/Components/timer.js"></script>
+    <script src="/Components/rock.js"></script>
     <script src="/start.js" defer></script>
-    <style>
-      #start {
-        position: fixed;
-        width: 100vw;
-        height: 100vh;
-        z-index: 10000;
-        background-color: white;
-        opacity: 50%;
-      }
-      #end {
-        position: fixed;
-        width: 100vw;
-        height: 100vh;
-        z-index: 10000;
-        background-color: white;
-        opacity: 50%;
-        display: none;
-      }
-    </style>
+    <link rel="stylesheet" href="/style.css">
   </head>
   <script>
 
@@ -42,13 +25,13 @@
   <body>
     <!-- https://stackoverflow.com/questions/53652132/a-frame-scene-with-intro-and-a-start-button -->
     <div id="start">
-      <button id="btn_start">
-        "HELLO"
+      <button id="btn_start" class="btn">
+        START
       </button>
     </div>
     <div id="end">
-      <button id="btn_restart">
-        "DONE"
+      <button id="btn_restart" class="btn">
+        RESTART
       </button>
     </div>
     <a-scene physics="debug: true">
@@ -93,25 +76,11 @@
         <a-mixin id="tree4" gltf-model="#tree5-gltf" scale="0.005 0.005 0.005">
         </a-mixin>
 
-        <a-mixin id="rock1" gltf-model="#rock1-gltf" scale="1.75 1.75 1.75">
+        <a-mixin id="rock1" gltf-model="#rock1-gltf">
         </a-mixin>
 
         <a-mixin id="rock2" gltf-model="#rock2-gltf" scale="1.75 1.75 1.75">
         </a-mixin>
-
-        <script id="rock-vert" type="text/html">
-          <a-entity class="link"
-            mixin="rock1"
-          >
-          </a-entity>
-        </script>
-
-        <script id="rock-hori" type="text/html">
-          <a-entity class="link"
-            mixin="rock1"
-          >
-          </a-entity>
-        </script>
 
       </a-asset>
 
@@ -123,8 +92,13 @@
 
       <a-entity
         mixin="rock1"
-        static-body="shape: cylinder;"
+        body="type: static; shape: cylinder;"
+        shape__main="shape: cylinder;
+                       height: 0.9;
+                       radiusTop: 0.24;
+                       radiusBottom: 0.24;"
         position="0 0 -15"
+        scale="1 2 1"
       >
       </a-entity>
 
@@ -152,21 +126,14 @@
       <a-entity mixin="bird" bird class="clickable"></a-entity>
 
       <a-entity trees id="trees"></a-entity>
+      <a-entity rocks id="rocks"></a-entity>
 
-      <a-box id='loadingEl'>
-      </a-box>
-
-      <!-- <a-icosahedron color="#FF926B" radius="5"></a-icosahedron> --> -->
       <a-entity template="src: #forest"></a-entity>
       <a-entity id="ouch" sound="src: #ouch; positional: false; volume: 0.8;"></a-entity>
-      <!-- <a-entity sound="src: #ouch; autoplay: true; loop: true; positional: false;"></a-entity> -->
 
-      <a-plane src="#grass" color="#888888" height="100" width="100" rotation="-90 0 0" position="0 0.01 -1.5" repeat="100 100" static-body></a-plane>
-      
-      <!-- <a-sky color="#a3d0ed"></a-sky> -->
-      <!-- <a-gradient-sky material="shader: gradient; topColor: 255 0 0; bottomColor: 0 121 255;"></a-gradient-sky> -->
+      <a-plane src="#grass" color="#888888" height="100" width="100" rotation="-90 0 0" position="0 0.5 0" repeat="100 100" static-body></a-plane>
 
-      <a-entity environment="preset: default; fog: 0.96; skyType: gradient; skyColor: #00b3ff;"></a-entity>
+      <a-entity environment="preset: default; fog: 0.96; skyType: gradient; skyColor: #00b3ff; groundColor: #28431e; groundTexture: none"></a-entity>
     </a-scene>
   </body>
 </html>

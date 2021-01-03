@@ -48,7 +48,7 @@ function getRandomTreePosition() {
   var pos = '';
   pos += Math.floor(getRandomIntInclusive(-15, 15)).toString();
   pos += ' ';
-  pos += Math.floor(getRandomIntInclusive(0, 0)).toString();
+  pos += '0.5';
   pos += ' ';
   pos += Math.floor(getRandomIntInclusive(-15, 15)).toString();
   // console.log(pos);

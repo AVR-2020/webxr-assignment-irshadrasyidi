@@ -3,7 +3,7 @@ var timer;
 
 AFRAME.registerComponent('timeee', {
   schema: {
-    time: { type: "number", default: 10 },
+    time: { type: "number", default: 120 },
   },
   
   init: function () {
