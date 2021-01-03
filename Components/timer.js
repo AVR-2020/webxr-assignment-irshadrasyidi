@@ -1,4 +1,5 @@
 // https://albert-gonzalez.github.io/easytimer.js/
+var timer;
 
 AFRAME.registerComponent('timeee', {
   schema: {
@@ -7,8 +8,8 @@ AFRAME.registerComponent('timeee', {
   
   init: function () {
     
-    var timer = new Timer();
-    console.log(timer);
+    timer = new Timer();
+    // console.log(timer);
     timer.start({countdown: true, startValues: {seconds: this.data.time}});
 
     // $('#countdownExample .values').html(timer.getTimeValues().toString());
@@ -22,10 +23,13 @@ AFRAME.registerComponent('timeee', {
       // $('#countdownExample .values').html('KABOOM!!');
       console.log('tetot');
     });
+
   },
 
   tick: function () {
-
+    var timeText = timer.getTotalTimeValues().seconds;
+    var timeBoard = document.querySelector('#timer');
+    timeBoard.setAttribute('text', 'value',  timeText);
   },
 
   start: function () {
