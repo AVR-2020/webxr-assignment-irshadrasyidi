@@ -10,6 +10,10 @@ document.querySelector("#btn_start").onclick = function() {
 
   var time = document.querySelector('#timer');
   time.setAttribute('timeee', '');
+  time.setAttribute('text', 'opacity', 1);
+
+  var score = document.querySelector('#score');
+  score.setAttribute('text', 'opacity', 1);
 }
 
 document.querySelector("#btn_restart").onclick = function() {

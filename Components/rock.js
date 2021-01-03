@@ -12,8 +12,8 @@ AFRAME.registerComponent('rocks', {
     let rocks = [];
     let sceneEl = document.querySelector('a-scene');
     
-    for (let i=-50; i<=50; i+=5){
-      for (let j=-50; j<=50; j+=100){
+    for (let i=-30; i<=30; i+=5){
+      for (let j=-30; j<=30; j+=60){
         var pos = '';
         rocks[i] = document.createElement('a-entity');
         rocks[i].setAttribute('id', 'rock_'+i+j.toString());
@@ -33,8 +33,8 @@ AFRAME.registerComponent('rocks', {
       }
     }
 
-    for (let i=-50; i<=50; i+=5){
-      for (let j=-50; j<=50; j+=100){
+    for (let i=-30; i<=30; i+=5){
+      for (let j=-30; j<=30; j+=60){
         var pos = '';
         rocks[i] = document.createElement('a-entity');
         rocks[i].setAttribute('id', 'rock_'+i+j.toString());

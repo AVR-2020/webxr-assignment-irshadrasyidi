@@ -3,7 +3,7 @@ var timer;
 
 AFRAME.registerComponent('timeee', {
   schema: {
-    time: { type: "number", default: 120 },
+    time: { type: "number", default: 180 },
   },
   
   init: function () {
@@ -12,23 +12,32 @@ AFRAME.registerComponent('timeee', {
     // console.log(timer);
     timer.start({countdown: true, startValues: {seconds: this.data.time}});
 
-    // $('#countdownExample .values').html(timer.getTimeValues().toString());
-
     timer.addEventListener('secondsUpdated', function (e) {
-      // $('#countdownExample .values').html(timer.getTimeValues().toString());
-      console.log(timer.getTimeValues());
+      // console.log(timer.getTimeValues());
     });
 
     timer.addEventListener('targetAchieved', function (e) {
-      // $('#countdownExample .values').html('KABOOM!!');
       // console.log('tetot');
       document.querySelector("#end").style.display = "initial";
 
       var player = document.querySelector("#player");
       player.getAttribute('movement-controls').enabled = false;
 
-      var player = document.querySelector("#tiger-spawn");
-      player.removeAttribute('tiger-spawn');
+      var tiger = document.querySelector("#tiger-spawn");
+      tiger.removeAttribute('tiger-spawn');
+
+      var finalScore = AFRAME.scenes[0].systems.state.state.score;
+
+      var finalScoreStr = 'Final Score : ' + finalScore;
+      // console.log(finalScoreStr);
+      document.getElementById('finalscoreboard').innerHTML  = finalScoreStr;
+
+      var score = document.querySelector("#score");
+      var timer = document.querySelector("#timer");
+
+      score.parentNode.removeChild(score);
+      timer.parentNode.removeChild(timer);
+
     });
 
   },

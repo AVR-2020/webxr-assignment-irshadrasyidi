@@ -25,16 +25,18 @@
   <body>
     <!-- https://stackoverflow.com/questions/53652132/a-frame-scene-with-intro-and-a-start-button -->
     <div id="start">
+      <h1>Ominous Birding</h1>
       <button id="btn_start" class="btn">
         START
       </button>
     </div>
     <div id="end">
+      <h2 id="finalscoreboard"></h2>
       <button id="btn_restart" class="btn">
         RESTART
       </button>
     </div>
-    <a-scene physics="debug: true">
+    <a-scene physics="debug: false">
       <a-asset>
         <a-img id="grass" src="Assets/Textures/grass.jpg"></a-asset-item>
         <a-asset-item id="bird-gltf" src="Assets/Models/Animals/low_poly_bird_animated/scene.gltf"></a-asset-item>
@@ -64,43 +66,7 @@
           scale="2 2 2">
         </a-mixin>
 
-        <a-mixin id="tree1" gltf-model="#tree2-gltf" scale="0.001 0.001 0.001">
-        </a-mixin>
-
-        <a-mixin id="tree2" gltf-model="#tree3-gltf" scale="1 1 1">
-        </a-mixin>
-
-        <a-mixin id="tree3" gltf-model="#tree4-gltf" scale="0.01 0.01 0.01">
-        </a-mixin>
-
-        <a-mixin id="tree4" gltf-model="#tree5-gltf" scale="0.005 0.005 0.005">
-        </a-mixin>
-
-        <a-mixin id="rock1" gltf-model="#rock1-gltf">
-        </a-mixin>
-
-        <a-mixin id="rock2" gltf-model="#rock2-gltf" scale="1.75 1.75 1.75">
-        </a-mixin>
-
       </a-asset>
-
-      <!-- <a-entity id="rocks-vert" layout="type: line; margin: 1.5" position="-3 -1 -4">
-        <a-entity template="src: #rock-vert"></a-entity>
-        <a-entity template="src: #rock-vert"></a-entity>
-        <a-entity template="src: #rock-vert"></a-entity>
-      </a-entity> -->
-
-      <a-entity
-        mixin="rock1"
-        body="type: static; shape: cylinder;"
-        shape__main="shape: cylinder;
-                       height: 0.9;
-                       radiusTop: 0.24;
-                       radiusBottom: 0.24;"
-        position="0 0 -15"
-        scale="1 2 1"
-      >
-      </a-entity>
 
       <a-entity tiger-spawn id="tiger-spawn"></a-entity>
 
@@ -112,14 +78,20 @@
                   position="0 1.6 0"
                   look-controls="pointerLockEnabled: false">
                   <a-cursor raycaster="objects: .clickable">
-                    <a-entity id="score" text="value: Score : 0" position="-1 2 -2" scale="5 5 5"></a-entity>
-                    <a-entity id="timer" text="value: Time : 0" position="5 2 -2" scale="5 5 5"></a-entity>
+                    <a-entity id="score" text="value: Score : 0; font: https://cdn.aframe.io/fonts/Exo2Bold.fnt; opacity: 0;" position="-1 2 -2" scale="5 5 5"></a-entity>
+                    <a-entity id="timer" text="value: Time : 0; font: https://cdn.aframe.io/fonts/Exo2Bold.fnt; opacity: 0;" position="5 2 -2" scale="5 5 5"></a-entity>
                   </a-cursor>
                 </a-entity>
       </a-entity>
       <!-- https://github.com/aframevr/aframe/issues/4742 -->
 
       
+      <a-entity mixin="bird" bird class="clickable"></a-entity>
+      <a-entity mixin="bird" bird class="clickable"></a-entity>
+      <a-entity mixin="bird" bird class="clickable"></a-entity>
+      <a-entity mixin="bird" bird class="clickable"></a-entity>
+      <a-entity mixin="bird" bird class="clickable"></a-entity>
+      <a-entity mixin="bird" bird class="clickable"></a-entity>
       <a-entity mixin="bird" bird class="clickable"></a-entity>
       <a-entity mixin="bird" bird class="clickable"></a-entity>
       <a-entity mixin="bird" bird class="clickable"></a-entity>

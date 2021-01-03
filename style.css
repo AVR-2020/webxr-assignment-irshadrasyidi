@@ -17,13 +17,31 @@
   display: none;
 }
 
+/* https://css-tricks.com/3-styles-for-big-headers/ */
+h1 {
+  font-family: Georgia, sans-serif;
+  font-size: 5em;
+  letter-spacing: -2px;
+  text-align: center;
+}
+
+h2 {
+  margin: 7%;
+  font-family: "Arial Black", sans-serif;
+  font-size: 4.5em;
+  letter-spacing: -1px;
+  background-color: black;
+  color: white;
+}
+
+/* https://freefrontend.com/css-buttons/ */
 .btn {
   /* margin-left: auto;
   margin-right: auto; */
   /*placement for code pen*/
-  margin: 15% 45%;
+  margin: 15% 46%;
   /*Button Text Style*/
-  font-family:'Inconsolata', 'Helvetica', 'Arial',         sans-serif;
+  font-family:'Inconsolata', 'Helvetica', 'Arial', sans-serif;
   font-size: inherit;
   text-align: center;
   font-weight: bold;

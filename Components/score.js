@@ -13,7 +13,11 @@ AFRAME.registerState({
       }
       var scoreBoard = document.querySelector('#score');
       var newScore = 'Score: ' + state.score;
-      scoreBoard.setAttribute('text', 'value',  newScore);
+      // scoreBoard.setAttribute('text', 'value',  newScore);
+      scoreBoard.setAttribute('text', {
+        "value": newScore,
+        'font': 'https://cdn.aframe.io/fonts/Exo2Bold.fnt'
+      });
 
       var ouch = document.querySelector("#tiger-spawn");
       ouch.components.sound.playSound();
@@ -23,17 +27,18 @@ AFRAME.registerState({
       state.score += action.points;
       var scoreBoard = document.querySelector('#score');
       var newScore = 'Score : ' + state.score;
-      scoreBoard.setAttribute('text', 'value',  newScore);
+      // scoreBoard.setAttribute('text', 'value',  newScore);
+      scoreBoard.setAttribute('text', {
+        "value": newScore,
+        'font': 'https://cdn.aframe.io/fonts/Exo2Bold.fnt'
+      });
 
       let sceneEl = document.querySelector('a-scene');
       var newBird = document.createElement('a-entity');
       newBird.setAttribute('mixin', 'bird');
       newBird.setAttribute('bird', '');
       newBird.setAttribute('class', 'clickable');
-      // newBird.setAttribute('sound', {
-      //   src: '#chirp',
-      //   on: click
-      // });
+
       sceneEl.appendChild(newBird);
     }
   }

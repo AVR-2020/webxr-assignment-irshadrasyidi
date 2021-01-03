@@ -2,9 +2,8 @@
 AFRAME.registerComponent('trees', {
 
   init: function(){
-    
-    //console.log('tree-man');
-    let count = 2;
+
+    let count = 25;
     let tree_types = [
       'Assets/Models/Trees/monstera_tree/scene.gltf',
       'Assets/Models/Trees/old_tree/scene.gltf',
@@ -46,11 +45,11 @@ AFRAME.registerComponent('trees', {
 
 function getRandomTreePosition() {
   var pos = '';
-  pos += Math.floor(getRandomIntInclusive(-15, 15)).toString();
+  pos += Math.floor(getRandomIntInclusive(-20, 20)).toString();
   pos += ' ';
   pos += '0.5';
   pos += ' ';
-  pos += Math.floor(getRandomIntInclusive(-15, 15)).toString();
+  pos += Math.floor(getRandomIntInclusive(-20, 20)).toString();
   // console.log(pos);
   return pos;
 }

@@ -36,11 +36,11 @@ AFRAME.registerComponent('tiger', {
 
 function getRandomTigerPosition() {
   var pos = '';
-  pos += Math.floor(getRandomIntInclusive(-20, 20)).toString();
+  pos += Math.floor(getRandomIntInclusive(-30, 30)).toString();
   pos += ' ';
   pos += Math.floor(getRandomIntInclusive(0, 0)).toString();
   pos += ' ';
-  pos += Math.floor(getRandomIntInclusive(-20, 20)).toString();
+  pos += Math.floor(getRandomIntInclusive(-30, 30)).toString();
   // console.log(pos);
   return pos;
 }

@@ -43,15 +43,6 @@ AFRAME.registerComponent('tiger-spawn', {
       newTiger.setAttribute('class', 'clickable');
       sceneEl.appendChild(newTiger);
     }
-    // let sceneEl = document.querySelector('a-scene');
-    // var newTiger = document.createElement('a-entity');
-    // newTiger.setAttribute('id', 'tiger');
-    // newTiger.setAttribute('position', getRandomTigerPosition());
-    // newTiger.setAttribute('mixin', 'tiger');
-    // newTiger.setAttribute('tiger', '');
-    // newTiger.setAttribute('look-at', '#player');
-    // newTiger.setAttribute('class', 'clickable');
-    // sceneEl.appendChild(newTiger);
 
   },
 });

@@ -36,7 +36,7 @@ AFRAME.registerComponent('bird', {
     this.el.object3D.position.y += y * 0.25;
     this.el.object3D.position.z += z * 0.25;
 
-    if(this.el.object3D.position.x > 15 || this.el.object3D.position.x < -15 || this.el.object3D.position.z > 15 || this.el.object3D.position.z < -15){
+    if(this.el.object3D.position.x > 25 || this.el.object3D.position.x < -25 || this.el.object3D.position.z > 25 || this.el.object3D.position.z < -25){
       this.el.parentNode.removeChild(this.el);
 
       let sceneEl = document.querySelector('a-scene');
@@ -59,11 +59,11 @@ AFRAME.registerComponent('bird', {
 
 function getRandomBirdPosition() {
   var pos = '';
-  pos += Math.floor(getRandomIntInclusive(-8, 8)).toString();
+  pos += Math.floor(getRandomIntInclusive(-25, 25)).toString();
   pos += ' ';
   pos += Math.floor(getRandomIntInclusive(3, 8)).toString();
   pos += ' ';
-  pos += Math.floor(getRandomIntInclusive(-8, 8)).toString();
+  pos += Math.floor(getRandomIntInclusive(-25, 25)).toString();
   // console.log(pos);
   return pos;
 }
