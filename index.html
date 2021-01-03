@@ -17,13 +17,22 @@
     <script src="/Components/timer.js"></script>
     <script src="/start.js" defer></script>
     <style>
-      #loading {
+      #start {
         position: fixed;
         width: 100vw;
         height: 100vh;
         z-index: 10000;
         background-color: white;
         opacity: 50%;
+      }
+      #end {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        z-index: 10000;
+        background-color: white;
+        opacity: 50%;
+        display: none;
       }
     </style>
   </head>
@@ -32,9 +41,14 @@
 	</script>
   <body>
     <!-- https://stackoverflow.com/questions/53652132/a-frame-scene-with-intro-and-a-start-button -->
-    <div id="loading">
-      <button>
+    <div id="start">
+      <button id="btn_start">
         "HELLO"
+      </button>
+    </div>
+    <div id="end">
+      <button id="btn_restart">
+        "DONE"
       </button>
     </div>
     <a-scene physics="debug: true">
@@ -124,8 +138,8 @@
                   position="0 1.6 0"
                   look-controls="pointerLockEnabled: false">
                   <a-cursor raycaster="objects: .clickable">
-                    <a-entity id="score" text="value: Score = 0" position="-1 2 -3" scale="10 10 10"></a-entity>
-                    <a-entity id="timer" position="10 2 -3" scale="10 10 10"></a-entity>
+                    <a-entity id="score" text="value: Score : 0" position="-1 2 -2" scale="5 5 5"></a-entity>
+                    <a-entity id="timer" text="value: Time : 0" position="5 2 -2" scale="5 5 5"></a-entity>
                   </a-cursor>
                 </a-entity>
       </a-entity>

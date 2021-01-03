@@ -3,7 +3,7 @@ var timer;
 
 AFRAME.registerComponent('timeee', {
   schema: {
-    time: { type: "number", default: 120 },
+    time: { type: "number", default: 10 },
   },
   
   init: function () {
@@ -21,7 +21,14 @@ AFRAME.registerComponent('timeee', {
 
     timer.addEventListener('targetAchieved', function (e) {
       // $('#countdownExample .values').html('KABOOM!!');
-      console.log('tetot');
+      // console.log('tetot');
+      document.querySelector("#end").style.display = "initial";
+
+      var player = document.querySelector("#player");
+      player.getAttribute('movement-controls').enabled = false;
+
+      var player = document.querySelector("#tiger-spawn");
+      player.removeAttribute('tiger-spawn');
     });
 
   },
@@ -29,7 +36,7 @@ AFRAME.registerComponent('timeee', {
   tick: function () {
     var timeText = timer.getTotalTimeValues().seconds;
     var timeBoard = document.querySelector('#timer');
-    timeBoard.setAttribute('text', 'value',  timeText);
+    timeBoard.setAttribute('text', 'value',  'time : ' + timeText);
   },
 
   start: function () {

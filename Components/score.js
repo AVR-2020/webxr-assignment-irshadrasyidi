@@ -8,6 +8,9 @@ AFRAME.registerState({
   handlers: {
     decreaseScore: function (state, action) {
       state.score -= action.points;
+      if (state.score < 0) {
+        state.score = 0;
+      }
       var scoreBoard = document.querySelector('#score');
       var newScore = 'Score: ' + state.score;
       scoreBoard.setAttribute('text', 'value',  newScore);
@@ -19,7 +22,7 @@ AFRAME.registerState({
     increaseScore: function (state, action) {
       state.score += action.points;
       var scoreBoard = document.querySelector('#score');
-      var newScore = 'Score: ' + state.score;
+      var newScore = 'Score : ' + state.score;
       scoreBoard.setAttribute('text', 'value',  newScore);
 
       let sceneEl = document.querySelector('a-scene');

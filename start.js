@@ -1,5 +1,6 @@
-document.querySelector("button").onclick = function() {
-  document.querySelector("#loading").style.display = "none";
+// https://stackoverflow.com/questions/53652132/a-frame-scene-with-intro-and-a-start-button
+document.querySelector("#btn_start").onclick = function() {
+  document.querySelector("#start").style.display = "none";
 
   var sound = document.querySelector("#trees");
   sound.components.sound.playSound();
@@ -9,4 +10,8 @@ document.querySelector("button").onclick = function() {
 
   var time = document.querySelector('#timer');
   time.setAttribute('timeee', '');
+}
+
+document.querySelector("#btn_restart").onclick = function() {
+  window.location.reload();
 }
