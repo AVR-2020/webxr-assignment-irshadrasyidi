@@ -3,7 +3,7 @@ var timer;
 
 AFRAME.registerComponent('timeee', {
   schema: {
-    time: { type: "number", default: 180 },
+    time: { type: "number", default: 120 },
   },
   
   init: function () {
@@ -28,7 +28,7 @@ AFRAME.registerComponent('timeee', {
 
       var finalScore = AFRAME.scenes[0].systems.state.state.score;
 
-      var finalScoreStr = 'Final Score : ' + finalScore;
+      var finalScoreStr = 'Poin Akhir : ' + finalScore;
       // console.log(finalScoreStr);
       document.getElementById('finalscoreboard').innerHTML  = finalScoreStr;
 
@@ -45,7 +45,7 @@ AFRAME.registerComponent('timeee', {
   tick: function () {
     var timeText = timer.getTotalTimeValues().seconds;
     var timeBoard = document.querySelector('#timer');
-    timeBoard.setAttribute('text', 'value',  'time : ' + timeText);
+    timeBoard.setAttribute('text', 'value',  'Waktu : ' + timeText);
   },
 
   start: function () {

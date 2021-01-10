@@ -12,7 +12,7 @@ AFRAME.registerState({
         state.score = 0;
       }
       var scoreBoard = document.querySelector('#score');
-      var newScore = 'Score: ' + state.score;
+      var newScore = 'Poin : ' + state.score;
       // scoreBoard.setAttribute('text', 'value',  newScore);
       scoreBoard.setAttribute('text', {
         "value": newScore,
@@ -26,7 +26,7 @@ AFRAME.registerState({
     increaseScore: function (state, action) {
       state.score += action.points;
       var scoreBoard = document.querySelector('#score');
-      var newScore = 'Score : ' + state.score;
+      var newScore = 'Poin : ' + state.score;
       // scoreBoard.setAttribute('text', 'value',  newScore);
       scoreBoard.setAttribute('text', {
         "value": newScore,
